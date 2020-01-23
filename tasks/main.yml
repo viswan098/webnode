@@ -1,0 +1,16 @@
+---
+# tasks file for webnode
+- name: Install Apache
+  yum: name=httpd state=latest
+
+- name: Create custom document root
+  file: path={{ doc_root }} state=directory owner=apache group=apache
+
+- name: Set up HTML file
+  copy: src=index.html dest={{ doc_root }}/index.html owner=apache group=apache mode=0644
+
+- name: restart httpd service
+  service: name=httpd state=restarted
+
+- name: Stop firewall service
+  shell: /usr/bin/systemctl stop firewalld

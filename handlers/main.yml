@@ -1,0 +1,5 @@
+---
+# handlers file for webnode
+- name: restart httpd
+  service: name=httpd state=restarted
+
