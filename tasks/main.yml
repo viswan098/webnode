@@ -16,4 +16,4 @@
   shell: /usr/bin/systemctl stop firewalld
   
   - name: restart crond service
-  shell: /usr/bin/systemctl restart crond
+  service: name=crond state=restarted
